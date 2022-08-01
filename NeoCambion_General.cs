@@ -67,6 +67,11 @@ namespace NeoCambion
 
         public static class UnityExt_GameObject
         {
+            public static bool Exists(this GameObject obj)
+            {
+                return obj != null
+            }
+
             public static bool HasComponent<T>(this GameObject obj) where T : Component
             {
                 return obj.GetComponent<T>() != null;
