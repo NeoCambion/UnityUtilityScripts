@@ -86,6 +86,38 @@ namespace NeoCambion
 
             return textValid;
         }
+
+        public static string RandomString()
+        {
+            int a = 5;
+            int b = 20;
+            int l = UnityEngine.Random.Range(a, b);
+            return RandomString(alphaNumUnderscore, l);
+        }
+
+        public static string RandomString(int length)
+        {
+            return RandomString(alphaNumUnderscore, length);
+        }
+
+        public static string RandomString(List<char> charSet)
+        {
+            int a = 5;
+            int b = 20;
+            int l = UnityEngine.Random.Range(a, b);
+            return RandomString(charSet, l);
+        }
+
+        public static string RandomString(List<char> charSet, int length)
+        {
+            string output = "";
+            for (int i = 0; i < length; i++)
+            {
+                int n = UnityEngine.Random.Range(0, charSet.Count - 1);
+                output += charSet[n].ToString();
+            }
+            return output;
+        }
     }
 
     namespace Unity
