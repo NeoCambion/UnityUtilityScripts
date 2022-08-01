@@ -69,7 +69,7 @@ namespace NeoCambion
         {
             public static bool Exists(this GameObject obj)
             {
-                return obj != null
+                return obj != null;
             }
 
             public static bool HasComponent<T>(this GameObject obj) where T : Component
