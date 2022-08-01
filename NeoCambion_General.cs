@@ -50,12 +50,12 @@ namespace NeoCambion
 
         public static bool IsNullOrEmpty(this string text)
         {
-            return string.IsNullOrEmpty(text)
+            return string.IsNullOrEmpty(text);
         }
-        
+
         public static bool IsNullOrWhiteSpace(this string text)
         {
-            return string.IsNullOrWhiteSpace(text)
+            return string.IsNullOrWhiteSpace(text);
         }
 
         public static bool IsEmptyOrNullOrWhiteSpace(this string text)
@@ -68,7 +68,7 @@ namespace NeoCambion
             return text.ValidateString(alphaNumUnderscore);
         }
 
-        public static bool ValidateString(this string text List<char> validChars)
+        public static bool ValidateString(this string text, List<char> validChars)
         {
             bool textValid = true;
 
