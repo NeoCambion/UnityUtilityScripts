@@ -36,6 +36,58 @@ namespace NeoCambion
         }
     }
 
+    public static class Ext_String
+    {
+        public static List<char> alphaNumUnderscore = new List<char>
+        {
+            'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm',
+            'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z',
+            'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M',
+            'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z',
+            '0', '1', '2', '3', '4', '5', '6', '7', '8', '9',
+            '_', '-'
+        };
+
+        public static bool IsNullOrEmpty(this string text)
+        {
+            return string.IsNullOrEmpty(text)
+        }
+        
+        public static bool IsNullOrWhiteSpace(this string text)
+        {
+            return string.IsNullOrWhiteSpace(text)
+        }
+
+        public static bool IsEmptyOrNullOrWhiteSpace(this string text)
+        {
+            return text.IsNullOrEmpty() || text.IsNullOrWhiteSpace();
+        }
+
+        public static bool ValidateString(this string text)
+        {
+            return text.ValidateString(alphaNumUnderscore);
+        }
+
+        public static bool ValidateString(this string text List<char> validChars)
+        {
+            bool textValid = true;
+
+            int n = text.Length;
+
+            for (int i = 0; i < n; i++)
+            {
+                char toCheck = char.Parse(text.Substring(i, 1));
+                if (!validChars.Contains(toCheck))
+                {
+                    textValid = false;
+                    break;
+                }
+            }
+
+            return textValid;
+        }
+    }
+
     namespace Unity
     {
         public static class UnityExt_Float
