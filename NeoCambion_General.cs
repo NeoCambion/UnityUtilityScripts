@@ -16,7 +16,9 @@ namespace NeoCambion
         North, NorthNorthEast, NorthEast, EastNorthEast,
         East, EastSouthEast, SouthEast, SouthSouthEast,
         South, SouthSouthWest, SouthWest, WestSouthWest,
-        West, WestNorthWest, NorthWest, NorthNorthWest };
+        West, WestNorthWest, NorthWest, NorthNorthWest
+    };
+    public enum RotDirection { Clockwise, CounterClockwise };
 
     public enum Condition_Number { Never, LessThan, LessThanOrEqualTo, EqualTo, GreaterThanOrEqualTo, GreaterThan, Always };
     public enum Condition_String { Never, Matches, DoesNotMatch, Contains, DoesNotContain, IsSubstring, IsNotSubstring, Always };
