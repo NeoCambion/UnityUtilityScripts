@@ -65,12 +65,26 @@ namespace NeoCambion
 
         public static bool ValidateString(this string text)
         {
-            return text.ValidateString(alphaNumUnderscore);
+            return text.ValidateString(alphaNumUnderscore, false);
+        }
+
+        public static bool ValidateString(this string text, bool emptyInvalid)
+        {
+            return text.ValidateString(alphaNumUnderscore, emptyInvalid);
         }
 
         public static bool ValidateString(this string text, List<char> validChars)
         {
+            return text.ValidateString(validChars, false);
+        }
+
+        public static bool ValidateString(this string text, List<char> validChars, bool emptyInvalid)
+        {
             bool textValid = true;
+            if (emptyInvalid && IsEmptyOrNullOrWhiteSpace(text))
+            {
+                textValid = false;
+            }
 
             int n = text.Length;
 
