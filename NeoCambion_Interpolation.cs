@@ -117,7 +117,7 @@ namespace NeoCambion
             }
         }
 
-        public static class InterpTime
+        public static class ITime
         {
             public static float Time(bool realtime)
             {
@@ -130,7 +130,7 @@ namespace NeoCambion
                     return UnityEngine.Time.time;
                 }
             }
-
+            
             public static float DeltaTime(bool realtime)
             {
                 if (realtime)
@@ -142,7 +142,7 @@ namespace NeoCambion
                     return UnityEngine.Time.deltaTime;
                 }
             }
-
+            
             public static float FixedDeltaTime(bool realtime)
             {
                 if (realtime)
