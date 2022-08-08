@@ -23,6 +23,8 @@ namespace NeoCambion
     public enum Condition_Number { Never, LessThan, LessThanOrEqualTo, EqualTo, GreaterThanOrEqualTo, GreaterThan, Always };
     public enum Condition_String { Never, Matches, DoesNotMatch, Contains, DoesNotContain, IsSubstring, IsNotSubstring, Always };
 
+    public enum RectProperty { X, Y, Width, Height };
+
     #endregion
 
     public static class Ext_Object
@@ -133,6 +135,23 @@ namespace NeoCambion
                 output += charSet[n].ToString();
             }
             return output;
+        }
+
+        public static bool ValidTypeName(this string typeName)
+        {
+            return Type.GetType(typeName) != null;
+        }
+
+        public static Type TypeFromName(this string typeName)
+        {
+            if (typeName.ValidTypeName())
+            {
+                return Type.GetType(typeName);
+            }
+            else
+            {
+                return null;
+            }
         }
     }
 
@@ -783,6 +802,55 @@ namespace NeoCambion
             public static void MoveTo(this Transform trn, Transform target, Vector3 tether, float range)
             {
                 trn.MoveTo(target.position, tether, range);
+            }
+        }
+
+        public static class UnityExt_Rect
+        {
+            public static Rect SetProperty(this Rect rect, RectProperty property, float value)
+            {
+                switch (property)
+                {
+                    default:
+                    case RectProperty.X:
+                        rect.Set(value, rect.y, rect.width, rect.height);
+                        return rect;
+
+                    case RectProperty.Y:
+                        rect.Set(rect.x, value, rect.width, rect.height);
+                        return rect;
+
+                    case RectProperty.Width:
+                        rect.Set(rect.x, rect.y, value, rect.height);
+                        return rect;
+
+                    case RectProperty.Height:
+                        rect.Set(rect.x, rect.y, rect.width, value);
+                        return rect;
+                }
+            }
+
+            public static Rect ModifyProperty(this Rect rect, RectProperty property, float adjustment)
+            {
+                switch (property)
+                {
+                    default:
+                    case RectProperty.X:
+                        rect.Set(rect.x + adjustment, rect.y, rect.width, rect.height);
+                        return rect;
+
+                    case RectProperty.Y:
+                        rect.Set(rect.x, rect.y + adjustment, rect.width, rect.height);
+                        return rect;
+
+                    case RectProperty.Width:
+                        rect.Set(rect.x, rect.y, rect.width + adjustment, rect.height);
+                        return rect;
+
+                    case RectProperty.Height:
+                        rect.Set(rect.x, rect.y, rect.width, rect.height + adjustment);
+                        return rect;
+                }
             }
         }
 
